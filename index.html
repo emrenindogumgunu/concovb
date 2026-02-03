@@ -8,59 +8,43 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Montserrat',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif}
 
 body{
   min-height:100vh;
-  background: linear-gradient(120deg,#7f00ff,#e100ff);
+  background:linear-gradient(120deg,#7f00ff,#e100ff);
   color:white;
   overflow-x:hidden;
 }
 
-/* ARKA PLAN ANİMASYON */
 .bg{
-  position:fixed;
-  inset:0;
+  position:fixed;inset:0;
   background:
     radial-gradient(circle at 20% 20%,rgba(255,255,255,.15),transparent 40%),
     radial-gradient(circle at 80% 70%,rgba(255,255,255,.12),transparent 40%);
   animation:bgMove 12s infinite alternate;
   z-index:-1;
 }
-@keyframes bgMove{
-  0%{transform:scale(1)}
-  100%{transform:scale(1.1)}
-}
+@keyframes bgMove{to{transform:scale(1.1)}}
 
-header{
+header{text-align:center;padding:80px 20px 20px;animation:fadeDown 1.2s}
+header h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900}
+header p{margin-top:15px;font-size:1.2rem;opacity:.9}
+
+.counter{
   text-align:center;
-  padding:80px 20px 40px;
-  animation:fadeDown 1.2s ease;
+  margin:30px 0 10px;
+  font-size:1.4rem;
+  font-weight:700;
+  animation:fadeUp 1.2s;
 }
+.counter span{font-size:2.4rem;display:block;margin-top:10px}
 
-header h1{
-  font-size:clamp(2.5rem,6vw,4.5rem);
-  font-weight:900;
-  letter-spacing:2px;
-}
-
-header p{
-  margin-top:15px;
-  font-size:1.2rem;
-  opacity:.9;
-}
-
-/* PLATFORM KARTLARI */
 .platforms{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:25px;
-  padding:50px 10%;
+  padding:40px 10%;
 }
 
 .card{
@@ -71,40 +55,26 @@ header p{
   text-align:center;
   font-size:1.2rem;
   font-weight:700;
-  transition:.4s;
   animation:float 5s ease-in-out infinite;
+  transition:.4s;
 }
+.card:hover{transform:translateY(-12px) scale(1.05);background:rgba(255,255,255,.25)}
+@keyframes float{50%{transform:translateY(-10px)}}
 
-.card:nth-child(2){animation-delay:1s}
-.card:nth-child(3){animation-delay:2s}
-.card:nth-child(4){animation-delay:3s}
-
-.card:hover{
-  transform:translateY(-12px) scale(1.05);
-  background:rgba(255,255,255,.25);
-}
-
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-10px)}
-}
-
-/* UYARI METNİ */
 .warning{
   max-width:800px;
-  margin:40px auto;
+  margin:30px auto;
   padding:0 20px;
   text-align:center;
   font-size:1.1rem;
   line-height:1.7;
-  animation:fadeUp 1.4s ease;
+  animation:fadeUp 1.4s;
 }
 
-/* BUTON */
 .action{
   display:flex;
   justify-content:center;
-  margin:60px 0;
+  margin:30px 0 50px;
 }
 
 button{
@@ -118,29 +88,41 @@ button{
   color:white;
   box-shadow:0 15px 40px rgba(0,0,0,.35);
   transition:.3s;
+  position:relative;
+  overflow:hidden;
 }
+button::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.6),transparent);
+  transform:translateX(-100%);
+}
+button:hover::after{animation:shine 1s}
+@keyframes shine{to{transform:translateX(100%)}}
+button:hover{transform:scale(1.08)}
 
-button:hover{
-  transform:scale(1.08);
+.share{
+  display:none;
+  justify-content:center;
+  gap:15px;
+  animation:fadeUp .8s;
 }
+.share a{
+  background:rgba(255,255,255,.2);
+  padding:12px 18px;
+  border-radius:30px;
+  color:white;
+  text-decoration:none;
+  font-weight:700;
+  transition:.3s;
+}
+.share a:hover{background:rgba(255,255,255,.35)}
 
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:30px 15px;
-  opacity:.75;
-  font-size:.9rem;
-}
+footer{text-align:center;padding:25px;opacity:.75;font-size:.9rem}
 
-/* ANİMASYONLAR */
-@keyframes fadeDown{
-  from{opacity:0;transform:translateY(-40px)}
-  to{opacity:1;transform:translateY(0)}
-}
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(40px)}
-  to{opacity:1;transform:translateY(0)}
-}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-40px)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}}
 </style>
 </head>
 
@@ -152,6 +134,11 @@ footer{
   <p>Dijital oyun platformlarına müdahaleye hayır</p>
 </header>
 
+<div class="counter">
+  Toplam Destek
+  <span id="count">0</span>
+</div>
+
 <section class="platforms">
   <div class="card">STEAM</div>
   <div class="card">EPIC GAMES</div>
@@ -161,18 +148,54 @@ footer{
 
 <section class="warning">
   Dijital oyun platformlarına getirilecek kısıtlamalar,
-  milyonlarca oyuncunun erişimini ve özgürlüğünü tehdit ediyor.
-  Bu sadece oyun değil, dijital kültüre müdahaledir.
+  milyonlarca oyuncunun erişimini ve dijital özgürlüğünü tehdit ediyor.
 </section>
 
 <div class="action">
-  <button>DESTEK VER</button>
+  <button id="supportBtn">DESTEK VER</button>
 </div>
 
-<footer>
-  © 2026 | Oyunuma Dokunma
-</footer>
+<div class="share" id="shareBox">
+  <a id="tw" target="_blank">Twitter</a>
+  <a id="wa" target="_blank">WhatsApp</a>
+</div>
+
+<footer>© 2026 | Oyunuma Dokunma</footer>
+
+<script>
+let count = localStorage.getItem("destek") || 0;
+count = parseInt(count);
+document.getElementById("count").innerText = count;
+
+const btn = document.getElementById("supportBtn");
+const share = document.getElementById("shareBox");
+
+btn.onclick = () => {
+  if(localStorage.getItem("destekVerdi")) return;
+  count++;
+  localStorage.setItem("destek",count);
+  localStorage.setItem("destekVerdi",true);
+  document.getElementById("count").innerText = count;
+  share.style.display="flex";
+
+  const text = encodeURIComponent(
+    "#OYUNUMADOKUNMA – Dijital oyun platformlarına müdahaleye hayır!"
+  );
+  const url = encodeURIComponent(location.href);
+
+  document.getElementById("tw").href =
+    `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+
+  document.getElementById("wa").href =
+    `https://wa.me/?text=${text}%20${url}`;
+};
+
+if(localStorage.getItem("destekVerdi")){
+  share.style.display="flex";
+}
+</script>
 
 </body>
 </html>
+
 
