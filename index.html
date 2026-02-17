@@ -52,9 +52,15 @@ button:hover{
 
 /* Paylaş Butonları */
 .share-buttons{
-  margin-top:30px;
+  margin-top:20px;
   display:flex;
   gap:15px;
+  opacity:0;
+  transition: opacity 0.5s ease;
+}
+
+.share-buttons.show{
+  opacity:1;
 }
 
 .share-buttons a{
@@ -75,6 +81,13 @@ button:hover{
 .whatsapp{ background:#25D366; }
 .tiktok{ background:#000; color:#fff; }
 .instagram{ background:#C13584; }
+
+#message{
+  margin-top:15px;
+  font-size:18px;
+  color:#99ccff;
+  display:none;
+}
 </style>
 </head>
 <body>
@@ -84,11 +97,13 @@ button:hover{
 <button id="btn">Kutlamak İçin Tıkla</button>
 
 <!-- Paylaş Butonları -->
-<div class="share-buttons">
+<div class="share-buttons" id="share">
   <a class="whatsapp" href="https://api.whatsapp.com/send?text=Emre'nin Doğum Gününü Kutla! 🎉" target="_blank">WhatsApp</a>
   <a class="tiktok" href="https://www.tiktok.com/" target="_blank">TikTok</a>
   <a class="instagram" href="https://www.instagram.com/" target="_blank">Instagram</a>
 </div>
+
+<div id="message">Emre, doğum günün kutlu olsun 🎉</div>
 
 <script>
 let count = localStorage.getItem('kutlama') || 0;
@@ -103,6 +118,10 @@ document.getElementById('btn').addEventListener('click', function(){
     localStorage.setItem('kutlama', count);
     localStorage.setItem('tiklandi','evet');
     document.getElementById('counter').innerText = "Toplam Kutlama: " + count;
+
+    // Buton basılınca paylaş butonlarını ve mesajı göster
+    document.getElementById('share').classList.add('show');
+    document.getElementById('message').style.display = 'block';
 });
 </script>
 
