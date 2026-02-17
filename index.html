@@ -6,121 +6,94 @@
 <title>Emre'nin Doğum Günü</title>
 
 <style>
-body {
-    margin:0;
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(135deg,#001f3f,#003366,#004080);
-    font-family:Arial, sans-serif;
-    overflow:hidden;
+body{
+margin:0;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#001f3f,#003366,#004080);
+font-family:Arial;
+color:#4da6ff;
 }
 
-h1 {
-    color:#4da6ff;
-    font-size:45px;
-    text-align:center;
-    animation: glow 2s infinite alternate;
+h1{
+font-size:45px;
+animation:glow 2s infinite alternate;
 }
 
-@keyframes glow {
-    from { text-shadow: 0 0 10px #0066ff; }
-    to { text-shadow: 0 0 30px #66ccff; }
+@keyframes glow{
+from{ text-shadow:0 0 10px #0066ff; }
+to{ text-shadow:0 0 30px #66ccff; }
 }
 
-#counter {
-    margin:20px;
-    font-size:28px;
-    color:#80d4ff;
+#counter{
+font-size:28px;
+margin:20px;
 }
 
-button {
-    padding:18px 40px;
-    font-size:20px;
-    border:none;
-    border-radius:50px;
-    background:#0066ff;
-    color:white;
-    cursor:pointer;
-    transition:0.3s;
-    box-shadow:0 0 15px #3399ff;
-}
-
-button:hover {
-    transform:scale(1.1);
-    box-shadow:0 0 25px #66ccff;
-}
-
-.confetti {
-    position:absolute;
-    width:8px;
-    height:8px;
-    background:#3399ff;
-    top:-10px;
-    animation:fall linear forwards;
-}
-
-@keyframes fall {
-    to {
-        transform:translateY(100vh) rotate(720deg);
-        opacity:0;
-    }
+button{
+padding:18px 40px;
+font-size:20px;
+border:none;
+border-radius:50px;
+background:#0066ff;
+color:white;
+cursor:pointer;
 }
 </style>
 </head>
 <body>
 
 <h1>EMRE'NİN DOĞUM GÜNÜ</h1>
-
-<div id="counter">Toplam Kutlama: 0</div>
-
+<div id="counter">Yükleniyor...</div>
 <button onclick="kutla()">Kutlamak İçin Tıkla</button>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-let count = localStorage.getItem("kutlamaSayisi");
-let voted = localStorage.getItem("kutladim");
+const supabase = window.supabase.createClient(
+  "icnydfwcxgpvnaqyvufo",
+  "sb_publishable_gcCuunm8wRFlIrn9ZEh7eg_IeHXaUJg"
+);
 
-if(count === null){
-    count = 0;
-}else{
-    count = parseInt(count);
+async function loadCount(){
+  let { data } = await supabase
+    .from('counter')
+    .select('value')
+    .eq('id',1)
+    .single();
+  document.getElementById("counter").innerText =
+    "Toplam Kutlama: " + data.value;
 }
 
-document.getElementById("counter").innerText =
-"Toplam Kutlama: " + count;
+async function kutla(){
+  if(localStorage.getItem("kutladim")){
+    alert("Zaten kutladın!");
+    return;
+  }
 
-function kutla(){
+  let { data } = await supabase
+    .from('counter')
+    .select('value')
+    .eq('id',1)
+    .single();
 
-    if(voted){
-        alert("Zaten kutladın!");
-        return;
-    }
+  await supabase
+    .from('counter')
+    .update({ value: data.value + 1 })
+    .eq('id',1);
 
-    count++;
-    localStorage.setItem("kutlamaSayisi", count);
-    localStorage.setItem("kutladim", "evet");
-
-    document.getElementById("counter").innerText =
-    "Toplam Kutlama: " + count;
-
-    konfeti();
+  localStorage.setItem("kutladim","evet");
+  loadCount();
 }
 
-function konfeti(){
-    for(let i=0;i<40;i++){
-        let div=document.createElement("div");
-        div.classList.add("confetti");
-        div.style.left=Math.random()*100+"vw";
-        div.style.background="#66ccff";
-        div.style.animationDuration=(Math.random()*3+2)+"s";
-        document.body.appendChild(div);
-
-        setTimeout(()=>div.remove(),5000);
-    }
-}
+loadCount();
 </script>
+
+</body>
+</html>
+
 
 </body>
 </html>
