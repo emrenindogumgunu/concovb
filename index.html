@@ -9,66 +9,96 @@
 body{
     margin:0;
     height:100vh;
-    font-family:Arial, sans-serif;
     background:radial-gradient(circle at top,#0f2027,#203a43,#2c5364);
-    color:white;
+    font-family:Arial, sans-serif;
     display:flex;
     justify-content:center;
     align-items:center;
     flex-direction:column;
+    color:white;
     overflow:hidden;
 }
 
-/* LED Büyük Buton */
+/* Küçük Hoşgeldi Butonu */
 .main-btn{
-    font-size:3rem;
-    padding:20px 40px;
-    border:none;
-    border-radius:50px;
-    background:black;
-    color:#FFD700;
-    cursor:pointer;
-    text-shadow:0 0 10px gold,0 0 20px orange;
-    box-shadow:0 0 20px gold,inset 0 0 10px orange;
-    animation:pulse 2s infinite;
-}
-@keyframes pulse{
-    0%{transform:scale(1);}
-    50%{transform:scale(1.05);}
-    100%{transform:scale(1);}
-}
-
-/* Küçük Buton */
-.small-btn{
-    margin-top:20px;
+    position:absolute;
+    top:30px;
     padding:8px 18px;
-    font-size:0.8rem;
+    font-size:0.9rem;
     border:none;
     border-radius:20px;
+    background:black;
+    color:gold;
+    cursor:pointer;
+    box-shadow:0 0 10px gold;
+}
+
+/* Büyük Chat */
+.chat-box{
+    width:400px;
+    height:420px;
+    background:#111;
+    border-radius:15px;
+    padding:15px;
+    box-shadow:0 0 20px gold;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.chat-messages{
+    flex:1;
+    overflow-y:auto;
+    font-size:0.9rem;
+}
+
+.chat-input{
+    margin-top:10px;
+}
+
+.chat-input button{
+    padding:6px 10px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:0.8rem;
+}
+
+.yes{background:green;color:white;}
+.no{background:red;color:white;}
+
+/* Küçük Kutlama */
+.small-btn{
+    margin-top:15px;
+    padding:6px 15px;
+    font-size:0.8rem;
+    border:none;
+    border-radius:15px;
     background:gold;
     cursor:pointer;
 }
 
 /* Paylaş */
 .share-btn{
-    margin-top:15px;
-    padding:8px 18px;
+    margin-top:10px;
+    padding:6px 15px;
     border:none;
-    border-radius:20px;
+    border-radius:15px;
     background:#1DA1F2;
     color:white;
     cursor:pointer;
 }
 .socials{
     display:none;
-    margin-top:10px;
+    margin-top:8px;
+    text-align:center;
 }
 .socials a{
-    margin:5px;
-    padding:6px 10px;
+    margin:4px;
+    padding:4px 8px;
     background:black;
     color:white;
-    border-radius:15px;
+    border-radius:10px;
     text-decoration:none;
     font-size:0.7rem;
 }
@@ -78,7 +108,6 @@ body{
     position:absolute;
     width:8px;
     height:8px;
-    background:red;
     animation:fall 3s linear forwards;
 }
 @keyframes fall{
@@ -87,36 +116,23 @@ body{
         opacity:0;
     }
 }
-
-/* Chat */
-.chat-box{
-    position:absolute;
-    bottom:20px;
-    right:20px;
-    width:220px;
-    background:#111;
-    padding:10px;
-    border-radius:10px;
-    font-size:0.8rem;
-}
-.chat-box button{
-    margin-top:5px;
-    padding:5px;
-    font-size:0.7rem;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-}
-.yes{background:green;color:white;}
-.no{background:red;color:white;}
-
 </style>
 </head>
 <body>
 
 <button class="main-btn">🌙 RAMAZAN HOŞGELDİ</button>
 
-<button class="small-btn" onclick="confettiExplosion()">✨ RAMAZAN KUTLU OLSUN ✨</button>
+<div class="chat-box">
+    <div class="chat-messages" id="chatMessages">
+        🤖 Merhaba! Sohbet başlatmak için aşağıya bas.
+    </div>
+
+    <div class="chat-input" id="chatInput">
+        <button onclick="startChat()">Ramazan Kutlu Olsun</button>
+    </div>
+</div>
+
+<button class="small-btn" onclick="confettiExplosion()">✨ Ramazan Kutlu Olsun ✨</button>
 
 <button class="share-btn" onclick="toggleShare()">📤 Paylaş</button>
 
@@ -127,18 +143,28 @@ body{
 <a target="_blank" href="https://www.tiktok.com/">TikTok</a>
 </div>
 
-<div class="chat-box" id="chat">
-<div id="chatContent">
-<button onclick="startChat()">Ramazan Kutlu Olsun</button>
-</div>
-</div>
-
 <script>
 
-/* Paylaş Aç/Kapat */
-function toggleShare(){
-    var s=document.getElementById("socials");
-    s.style.display=s.style.display==="block"?"none":"block";
+/* Sohbet */
+function startChat(){
+    document.getElementById("chatMessages").innerHTML=
+    "👤 Ramazan Kutlu Olsun<br><br>🤖 Evet peki sen oruç tutuyor musun?";
+    
+    document.getElementById("chatInput").innerHTML=
+    "<button class='yes' onclick='answerYes()'>Evet</button>"+
+    "<button class='no' onclick='answerNo()'>Hayır</button>";
+}
+
+function answerYes(){
+    document.getElementById("chatMessages").innerHTML+=
+    "<br><br>👤 Evet<br><br>🤖 Çok güzelmiş Allah kabul etsin 🌙";
+    document.getElementById("chatInput").innerHTML="";
+}
+
+function answerNo(){
+    document.getElementById("chatMessages").innerHTML+=
+    "<br><br>👤 Hayır<br><br>🤖 Neyse sonra tutabilirsin 🙂";
+    document.getElementById("chatInput").innerHTML="";
 }
 
 /* Konfeti */
@@ -153,26 +179,15 @@ function confettiExplosion(){
     }
 }
 
-/* Chat */
-function startChat(){
-    document.getElementById("chatContent").innerHTML=
-    "🤖 Evet peki sen oruç tutuyor musun?<br>"+
-    "<button class='yes' onclick='answerYes()'>Evet</button>"+
-    "<button class='no' onclick='answerNo()'>Hayır</button>";
-}
-
-function answerYes(){
-    document.getElementById("chatContent").innerHTML=
-    "🤖 Çok güzelmiş Allah kabul etsin 🌙";
-}
-
-function answerNo(){
-    document.getElementById("chatContent").innerHTML=
-    "🤖 Neyse sonra tutabilirsin 🙂";
+/* Paylaş */
+function toggleShare(){
+    var s=document.getElementById("socials");
+    s.style.display=s.style.display==="block"?"none":"block";
 }
 
 </script>
 
 </body>
 </html>
+
 
