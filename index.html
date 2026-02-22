@@ -1,390 +1,53 @@
-
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="tr">
 <head>
-    <title>TerorClient</title>
-    <meta name="description" content="free utility mod for  minecraft 1.21.11"> 
-    <link rel="canonical" href="https://catlean.su/">
-
-    <link rel="preload" href="bg.png" as="image">
-    <link rel="preload" href="style.css" as="style">
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catlean Clone</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-    <div class="nav">
-        <div class="brand">
-            <div class="name">TerorClient</div>
-        </div>
+    <!-- Üst menü -->
+    <header>
+        <img src="images/logo.png" alt="Logo" class="logo">
         <nav>
-            <a href="#" onclick="window.open('https://catlean.su/changelog', '_blank')">Changelog</a>
-            <a href="#" onclick="window.open('https://catlean-dev.gitbook.io/catlean-documentation', '_blank')">Guides</a>
-            <a href="#" onclick="window.open('https://discord.gg/7hP6xDHwHZ', '_blank')">Discord</a>
-            <a href="#" onclick="window.open('https://gitverse.ru/catlean-dev', '_blank')">Gitverse</a>
-            <a href="#" onclick="window.open('https://www.donationalerts.com/r/pan4ur_', '_blank')">Donate</a>
+            <ul>
+                <li><a href="#home">Ana Sayfa</a></li>
+                <li><a href="#services">Hizmetler</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
         </nav>
-    </div>
-</header>
+    </header>
 
-<main class="wrap">
-    <section class="left">
-        <div class="update">✨ Open beta test</div>
-        <h1>Introducing<br><span class="accent">free utility mod</span></h1>
-
-        <div class="controls">
-            <button class="download-btn">Download</button>
-
-            <div class="dropdown">
-                <button class="btn dropdown-toggle">
-                    <span class="version-text">1.21.11</span>
-                </button>
-
-            </div>
-        </div>
-
-        <span class="accent-3">Fabric languge indirip yapın</span>
-
-        <h1><span class="accent-2">Suitable for</span></h1>
-
-        <div class="icons">
-            <div class="icon" data-ip="2b2t.org">
-                <img src="servers/2b2t.png" alt="2b2t" class="icon-img">
-                <span class="icon-text">2b2t</span>
-                <span class="copy-text">Copy IP</span>
-                <div class="copied-indicator">
-                    <span class="checkmark">✓</span>
-                    <span class="copied-text">Copied!</span>
-                </div>
-            </div>
-
-            <div class="icon" data-ip="crystalpvp.cc">
-                <img src="servers/cc.png" alt="crystalpvp.cc" class="icon-img">
-                <span class="icon-text">CC</span>
-                <span class="copy-text">Copy IP</span>
-                <div class="copied-indicator">
-                    <span class="checkmark">✓</span>
-                    <span class="copied-text">Copied!</span>
-                </div>
-            </div>
-
-            <div class="icon" data-ip="mcfunny.su">
-                <img src="servers/fg.png" alt="mcfunny.su" class="icon-img">
-                <span class="icon-text">FG</span>
-                <span class="copy-text">Copy IP</span>
-                <div class="copied-indicator">
-                    <span class="checkmark">✓</span>
-                    <span class="copied-text">Copied!</span>
-                </div>
-            </div>
-
-            <div class="icon" data-ip="mc.tntland.me">
-                <img src="servers/tnt.png" alt="mc.tntland.me" class="icon-img">
-                <span class="icon-text">TNT Land</span>
-                <span class="copy-text">Copy IP</span>
-                <div class="copied-indicator">
-                    <span class="checkmark">✓</span>
-                    <span class="copied-text">Copied!</span>
-                </div>
-            </div>
-        </div>
+    <!-- Ana Banner -->
+    <section id="home" class="banner">
+        <img src="images/banner.jpg" alt="Banner">
+        <h1>Hoşgeldiniz</h1>
     </section>
 
-    <section class="right">
-        <div class="steve">
-
+    <!-- Hizmetler -->
+    <section id="services">
+        <h2>Hizmetlerimiz</h2>
+        <div class="service-card">
+            <img src="images/servis1.jpg" alt="Hizmet 1">
+            <p>Detaylar burada...</p>
         </div>
+        <!-- Daha fazla servis ekleyebilirsin -->
     </section>
-</main>
 
-<section class="pvp-types">
-    <h2 class="pvp-title">Oynamak</h2>
+    <!-- İletişim -->
+    <section id="contact">
+        <h2>İletişim</h2>
+        <form>
+            <input type="text" placeholder="Adınız">
+            <input type="email" placeholder="E-posta">
+            <textarea placeholder="Mesajınız"></textarea>
+            <button type="submit">Gönder</button>
+        </form>
+    </section>
 
-    <div class="divider-line">
-        <div class="line-fade"></div>
-    </div>
-
-    <div class="pvp-container">
-        <div class="pvp-card">
-            <div class="pvp-image">
-                <img src="pvpcards/sword.png" alt="Sword HVH" class="static-img">
-                <video class="gif-img" autoplay muted loop playsinline>
-                    <source src="pvpcards/sword.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="pvp-info">
-                <h3 class="pvp-name">Sword HVH</h3>
-                <p class="pvp-subtitle">Aura has various methods of bypassing anti-cheat and will help knock all the shit out of your opponents</p>
-            </div>
-        </div>
-
-        <div class="pvp-card">
-            <div class="pvp-image">
-                <img src="pvpcards/komar.png" alt="Komar HVH" class="static-img">
-                <video class="gif-img" autoplay muted loop playsinline>
-                    <source src="pvpcards/komar.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="pvp-info">
-                <h3 class="pvp-name">Komar HVH</h3>
-                <p class="pvp-subtitle">In addition to the standard Elytra Target with custom speed selection and various peak techniques, the utility mod features Elytra Mace Target as well as the new Elytra Freeze</p>
-            </div>
-        </div>
-
-        <div class="pvp-card">
-            <div class="pvp-image">
-                <img src="pvpcards/crystal.png" alt="Crystal HVH" class="static-img">
-                <video class="gif-img" autoplay muted loop playsinline>
-                    <source src="pvpcards/crystal.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="pvp-info">
-                <h3 class="pvp-name">Crystal HVH</h3>
-                <p class="pvp-subtitle">Auto Crystal has all the necessary features, advanced logic, and synchronisation with Speed Mine, Auto Mine, and other functions, allowing you to crush your opponents' skulls on the workbench</p>
-            </div>
-        </div>
-
-        <div class="pvp-card">
-            <div class="pvp-image">
-                <img src="pvpcards/pve.png" alt="PVE" class="static-img">
-                <video class="gif-img" autoplay muted loop playsinline>
-                    <source src="pvpcards/pve.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="pvp-info">
-                <h3 class="pvp-name">PVE</h3>
-                <p class="pvp-subtitle">Catlean is a multi-tool utility mod. Does 150+ modules mean anything to you?</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="discord-section">
-    <div class="discord-container">
-        <div class="discord-content">
-            <div class="discord-logo">
-                <img src="discord-logo.png" alt="Discord" style="width: 160px; height: 160px;">
-            </div>
-            <h2 class="discord-title">Friendly Community</h2>
-            <p class="discord-description">
-                Become part of our growing community. Chat with other users and
-                get the latest updates
-            </p>
-            <button class="discord-btn" onclick="window.open('https://discord.gg/7hP6xDHwHZ', '_blank')">
-                Join
-            </button>
-        </div>
-
-        <div class="discord-screenshot">
-            <div class="macos-window">
-                <div class="macos-header">
-                    <div class="macos-buttons">
-                        <span class="macos-btn close"></span>
-                        <span class="macos-btn minimize"></span>
-                        <span class="macos-btn maximize"></span>
-                    </div>
-                    <div class="macos-title">discord</div>
-                </div>
-                <div class="macos-content">
-                    <img src="discord.png" alt="Discord Community" class="screenshot-img">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="reviews-section">
-    <h2 class="reviews-title">Reviews</h2>
-
-    <div class="divider-line">
-        <div class="line-fade"></div>
-    </div>
-
-    <div class="reviews-container">
-        <div class="carousel-container">
-            <div class="carousel-track">
-                <div class="carousel-card">
-                    <div class="card-header">
-                        <img src="avatars/kenzapen.png" alt="KenZapen" class="avatar">
-                        <span class="username">KenZapen</span>
-                    </div>
-                    <p class="card-text">
-                        Bu tamamen Betadır<br>
-                        я всех попускаю<br>
-                        просто тапаю хомяков<br>
-                    </p>
-                </div>
-
-                <div class="carousel-card">
-                    <div class="card-header">
-                        <img src="avatars/mrzak34.png" alt="MrZak34" class="avatar">
-                        <span class="username">MrZak34</span>
-                    </div>
-                    <p class="card-text">Говно</p>
-                </div>
-
-                <div class="carousel-card" >
-                    <div class="card-header">
-                        <img src="avatars/kilab.png" alt="KiLAB" class="avatar">
-                        <span class="username">KiLAB</span>
-                    </div>
-                    <p class="card-text">Hi guys whats going on?</p>
-                </div>
-
-                <div class="carousel-card">
-                    <div class="card-header">
-                        <img src="avatars/kowkzombie.png" alt="kowkzombie" class="avatar">
-                        <span class="username">kowkzombie</span>
-                    </div>
-                    <p class="card-text">Я вообще не писал этот отзыв</p>
-                </div>
-
-                <div class="carousel-card">
-                    <div class="card-header">
-                        <img src="avatars/ulybaka.png" alt="ulybaka1337" class="avatar">
-                        <span class="username">ulybaka1337</span>
-                    </div>
-                    <p class="card-text">Паста</p>
-                </div>
-
-                <div class="carousel-card">
-                    <div class="card-header">
-                        <img src="avatars/vanilla.png" alt="vanilla" class="avatar">
-                        <span class="username">vanilla</span>
-                    </div>
-                    <p class="card-text">
-                        вставь меня куда нить в сайт пожалуйста<br>
-                        я хочу стать легендой<br>этого комьюнити🥺
-                    </p>
-                </div>
-
-
-
-                <div class="carousel-card">
-                    <div class="card-header">
-                        <img src="avatars/kenzapen.png" alt="KenZapen" class="avatar">
-                        <span class="username">KenZapen</span>
-                    </div>
-                    <p class="card-text">
-                        килка пенит жоска<br>
-                        я всех попускаю<br>
-                        просто тапаю хомяков<br>
-                    </p>
-                </div>
-
-                <div class="carousel-card">
-                    <div class="card-header">
-                        <img src="avatars/mrzak34.png" alt="MrZak34" class="avatar">
-                        <span class="username">MrZak34</span>
-                    </div>
-                    <p class="card-text">Говно</p>
-                </div>
-
-                <div class="carousel-card" >
-                    <div class="card-header">
-                        <img src="avatars/kilab.png" alt="KiLAB" class="avatar">
-                        <span class="username">KiLAB</span>
-                    </div>
-                    <p class="card-text">Hi guys whats going on?</p>
-                </div>
-
-                <div class="carousel-card">
-                    <div class="card-header">
-                        <img src="avatars/kowkzombie.png" alt="kowkzombie" class="avatar">
-                        <span class="username">kowkzombie</span>
-                    </div>
-                    <p class="card-text">Я вообще не писал этот отзыв</p>
-                </div>
-
-                <div class="carousel-card">
-                    <div class="card-header">
-                        <img src="avatars/ulybaka.png" alt="ulybaka1337" class="avatar">
-                        <span class="username">ulybaka1337</span>
-                    </div>
-                    <p class="card-text">Паста</p>
-                </div>
-
-                <div class="carousel-card">
-                    <div class="card-header">
-                        <img src="avatars/vanilla.png" alt="vanilla" class="avatar">
-                        <span class="username">vanilla</span>
-                    </div>
-                    <p class="card-text">
-                        вставь меня куда нить в сайт пожалуйста<br>
-                        я хочу стать легендой<br>этого комьюнити🥺
-                    </p>
-                </div>
-
-
-
-                <div class="carousel-card">
-                    <div class="card-header">
-                        <img src="avatars/kenzapen.png" alt="KenZapen" class="avatar">
-                        <span class="username">İsim Bulunamadı</span>
-                    </div>
-                    <p class="card-text">
-                        килка пенит жоска<br>
-                        я всех попускаю<br>
-                        просто тапаю хомяков<br>
-                    </p>
-                </div>
-
-                <div class="carousel-card">
-                    <div class="card-header">
-                        <img src="avatars/mrzak34.png" alt="MrZak34" class="avatar">
-                        <span class="username">İsim Bulunamadı</span>
-                    </div>
-                    <p class="card-text">nise altyapı</p>
-                </div>
-
-                <div class="carousel-card" >
-                    <div class="card-header">
-                        <img src="avatars/kilab.png" alt="KiLAB" class="avatar">
-                        <span class="username">İsim Bulunamadı</span>
-                    </div>
-                    <p class="card-text">nise server</p>
-                </div>
-
-                <div class="carousel-card">
-                    <div class="card-header">
-                        <img src="avatars/kowkzombie.png" alt="kowkzombie" class="avatar">
-                        <span class="username">rextro</span>
-                    </div>
-                    <p class="card-text">nise client</p>
-                </div>
-
-                <div class="carousel-card">
-                    <div class="card-header">
-                        <img src="avatars/ulybaka.png" alt="ulybaka1337" class="avatar">
-                        <span class="username">freeform</span>
-                    </div>
-                    <p class="card-text">Terorclient nise</p>
-                </div>
-
-                <div class="carousel-card">
-                    <div class="card-header">
-                        <img src="avatars/vanilla.png" alt="vanilla" class="avatar">
-                        <span class="username">vanilla</span>
-                    </div>
-                    <p class="card-text">
-                        <br>
-                        Güzel Site<br>Güzel Altyapı
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<footer class="site-footer">
-    <div class="footer-content">
-        <div class="footer-text">
-            <p> Reststars31 - Freeform Tarafından Gelistrilmiş Ve Acık Kaynakdan Yardım Alınmış Sitedir
-    </div>
-</footer>
-
-<script src="script.js"></script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"9d1e64e0ea87333a","version":"2025.9.1","r":1,"token":"5eda118fac3f48278327cd9962cb0e81","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}' crossorigin="anonymous"></script>
+    <footer>
+        <p>&copy; 2026 Catlean Clone</p>
+    </footer>
 </body>
 </html>
