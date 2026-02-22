@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catlean Clone</title>
+    <title>Catlean Clone Animasyonlu</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Üst menü -->
+    <!-- Header / Menü -->
     <header>
         <img src="images/logo.png" alt="Logo" class="logo">
         <nav>
@@ -21,24 +21,33 @@
 
     <!-- Ana Banner -->
     <section id="home" class="banner">
-        <img src="images/banner.jpg" alt="Banner">
-        <h1>Hoşgeldiniz</h1>
+        <img src="images/banner.jpg" alt="Banner" class="fade-in">
+        <h1 class="fade-in-text">Hoşgeldiniz</h1>
     </section>
 
     <!-- Hizmetler -->
     <section id="services">
-        <h2>Hizmetlerimiz</h2>
-        <div class="service-card">
-            <img src="images/servis1.jpg" alt="Hizmet 1">
-            <p>Detaylar burada...</p>
+        <h2 class="slide-in">Hizmetlerimiz</h2>
+        <div class="services-container">
+            <div class="service-card slide-in-delay1">
+                <img src="images/servis1.jpg" alt="Hizmet 1">
+                <p>Profesyonel Temizlik</p>
+            </div>
+            <div class="service-card slide-in-delay2">
+                <img src="images/servis2.jpg" alt="Hizmet 2">
+                <p>Ofis Temizliği</p>
+            </div>
+            <div class="service-card slide-in-delay3">
+                <img src="images/servis3.jpg" alt="Hizmet 3">
+                <p>Kapsamlı Temizlik</p>
+            </div>
         </div>
-        <!-- Daha fazla servis ekleyebilirsin -->
     </section>
 
     <!-- İletişim -->
     <section id="contact">
-        <h2>İletişim</h2>
-        <form>
+        <h2 class="fade-in-text">İletişim</h2>
+        <form class="fade-in-text">
             <input type="text" placeholder="Adınız">
             <input type="email" placeholder="E-posta">
             <textarea placeholder="Mesajınız"></textarea>
@@ -46,8 +55,9 @@
         </form>
     </section>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Catlean Clone</p>
+        <p>REXTRO – FREEFORM tarafından beta olarak yapılmıştır</p>
     </footer>
 </body>
 </html>
